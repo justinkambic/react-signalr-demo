@@ -97,4 +97,11 @@ _ReSharper*/
 # Uncomment if necessary however generally it will be regenerated when needed
 #!**/packages/repositories.config
 
+# client ignores
+node_modules/
+**/js/rev/**/*
+**/js/dist/**/*
+**/js/typings/**/*
+**/js/bundle*
+**/js/css/main.css
 
