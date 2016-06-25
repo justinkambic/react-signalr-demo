@@ -1,0 +1,6 @@
+./bundle.js
+./lib/**/*
+./node_modules/**/*
+./scss/**/*
+./coverage/**/*
+./typings/**/*

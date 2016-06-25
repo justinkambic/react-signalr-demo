@@ -14,6 +14,19 @@ namespace react_signalr_demo
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Tree",
+                url: "tree",
+                defaults: new { controller = "Home", action = "Tree" }
+                );
+
+            routes.MapRoute(
+                name: "GetTree",
+                url: "tree/get",
+                defaults: new { controller = "Home", action = "GetTree" }
+                );
+
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
