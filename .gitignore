@@ -99,11 +99,12 @@ _ReSharper*/
 
 # client ignores
 node_modules/
-**/js/rev/**/*
-**/js/dist/**/*
-**/js/typings/**/*
-**/js/bundle*
-**/js/css/main.css
+**/Scripts/rev/**/*
+**/Scripts/dist/**/*
+**/Scripts/typings/**/*
+**/Scripts/bundle*
+**/Scripts/css/main.css
+**/Scripts/lib
 
 # ignore generated views from templates
 **/Views/Home/Tree.cshtml
