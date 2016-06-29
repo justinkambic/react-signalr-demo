@@ -1,0 +1,1 @@
+{"version":3,"file":"main.css","sources":["main.scss","node/_node.scss"],"sourcesContent":["\r\n\r\n@import './node/node';","\r\n.node {\r\n    padding: 5px;\r\n    border: 1px black solid;\r\n    margin: 2px;\r\n}"],"mappings":"ACCA,AAAA,KAAK,CAAC;EACF,OAAO,EAAE,GAAI;EACb,MAAM,EAAE,eAAgB;EACxB,MAAM,EAAE,GAAI;CACf","names":[],"sourceRoot":"/source/"}

@@ -4,6 +4,12 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.getTree = getTree;
+exports.selectNode = selectNode;
+exports.signalrListen = signalrListen;
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
 
 var _constants = require('./constants');
 
@@ -17,9 +23,13 @@ var _camelize = require('./camelize');
 
 var _camelize2 = _interopRequireDefault(_camelize);
 
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+window.jQuery = _jquery2.default;
+require('signalr');
+
 
 function treeFetchAction() {
     return {
@@ -54,3 +64,28 @@ function getTree() {
         });
     };
 };
+
+function selectNode(id) {
+    (0, _jquery2.default)(function () {
+        var proxy = _jquery2.default.connection.myHub1;
+
+        _jquery2.default.connection.hub.start().done(function () {
+            proxy.server.selectNode(id);
+        });
+    });
+}
+
+function signalrListen(dispatch) {
+    (0, _jquery2.default)(function () {
+        var chat = _jquery2.default.connection.myHub1;
+
+        chat.client.broadcastMessage = function (a, b) {
+            dispatch(treeReceive(a));
+        };
+
+        // $.connection.hub.start().done(function() {
+        //     // chat.server.send('hello', 'world');
+        //     chat.server.selectNode('TestId1');
+        // });
+    });
+}

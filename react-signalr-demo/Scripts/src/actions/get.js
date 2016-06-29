@@ -1,4 +1,6 @@
-
+import $ from 'jquery';
+window.jQuery = $;
+require('signalr');
 import * as Actions from './constants';
 import fetch from 'isomorphic-fetch';
 import camelize from './camelize';
@@ -42,3 +44,28 @@ export function getTree() {
         );
     };
 };
+
+export function selectNode(id) {
+    $(function() {
+        var proxy = $.connection.myHub1;
+
+        $.connection.hub.start().done(function() {
+            proxy.server.selectNode(id);
+        });
+    });
+}
+
+export function signalrListen(dispatch) {
+    $(function() {
+        var chat = $.connection.myHub1;
+
+        chat.client.broadcastMessage = function(a, b) {
+            dispatch(treeReceive(a));
+        };
+
+        // $.connection.hub.start().done(function() {
+        //     // chat.server.send('hello', 'world');
+        //     chat.server.selectNode('TestId1');
+        // });
+    });
+}

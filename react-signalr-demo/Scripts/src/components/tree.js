@@ -1,7 +1,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { getTree } from '../actions/get';
+import { getTree, signalrListen } from '../actions/get';
 import Node from './treeNode';
 
 export class Tree extends Component {
@@ -9,6 +9,7 @@ export class Tree extends Component {
         const { dispatch } = this.props;
 
         dispatch(getTree());
+        signalrListen(dispatch);
     }
     
     render() {
@@ -18,9 +19,11 @@ export class Tree extends Component {
             <div>
                 {
                     node &&
-                    <Node
-                        node={ node }
-                    />
+                    <svg width="500" height="900">
+                        <Node
+                            node={ node }
+                        />
+                    </svg>
                 }
                 {
                     !node &&
@@ -38,7 +41,7 @@ Tree.propTypes = {
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         value: PropTypes.string.isRequired,
-        childrenNodes: PropTypes.object
+        childNodes: PropTypes.array
     })
 };
 

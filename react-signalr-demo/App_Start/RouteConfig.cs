@@ -25,6 +25,10 @@ namespace react_signalr_demo
                 defaults: new { controller = "Home", action = "GetTree" }
                 );
 
+            routes.MapRoute(
+                name: "Test",
+                url: "test",
+                defaults: "/test.html");
 
             routes.MapRoute(
                 name: "Default",

@@ -38,7 +38,7 @@ gulp.task('build', [ 'clean-old', 'babel' ], () => {
 
     return browserify('./main.js', { debug: true }) // specify entry point
         .transform('babelify', {
-            presets: [ 'es2015', 'react' ]
+           // presets: [ 'es2015', 'react' ]
         }) // main.js is not transpiled in previous step, this ensures browserify can handle it
         .transform(envify(envifyOpts), {
             global: true
