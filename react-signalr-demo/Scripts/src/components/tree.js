@@ -19,7 +19,7 @@ export class Tree extends Component {
             <div>
                 {
                     node &&
-                    <svg width="500" height="900">
+                    <svg width="900" height="900">
                         <Node
                             node={ node }
                         />
