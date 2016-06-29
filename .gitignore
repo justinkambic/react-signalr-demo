@@ -97,4 +97,15 @@ _ReSharper*/
 # Uncomment if necessary however generally it will be regenerated when needed
 #!**/packages/repositories.config
 
+# client ignores
+node_modules/
+**/Scripts/rev/**/*
+**/Scripts/dist/**/*
+**/Scripts/typings/**/*
+**/Scripts/bundle*
+**/Scripts/css/main.css
+**/Scripts/lib
+
+# ignore generated views from templates
+**/Views/Home/Tree.cshtml
 
