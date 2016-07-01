@@ -64,21 +64,46 @@ export default class Node extends Component {
     render() {
         const self = this;
         const { node } = this.props;
-        const { childNodes, x, y } = node;
-        const coX = x * 60;
-        const coY = y * 60;
+        const { children, x, y } = node;
+        const coX = (x * 90) + 60;
+        const coY = (y * 90) + 60;
         const fill = node.highlighted ? "yellow" : "black";
+        const width = 50;
+        const height = 25;
+        
+        const { parentOrigin } = this.props;
+
+        // origin to pass to children
+        const originToPass = {
+            x: coX + (width / 2),
+            y: coY + height
+        };
+
+        // origin to draw line to parent
+        const topOriginX = coX + (width / 2);
+        const topOriginY = coY;
         return (
             <g>
-                <rect width="50" height="24" fill={ fill } x={ coX } y={ coY } onClick={ this.handleSelect } />
+                {
+                    parentOrigin &&
+                    <line
+                        x1={ parentOrigin.x } 
+                        y1={ parentOrigin.y } 
+                        x2={ topOriginX } 
+                        y2={ topOriginY }
+                        stroke="black"
+                        stroke-width="2" />
+                }
+                <rect width={ width } height={ height } fill={ fill } x={ coX } y={ coY } onClick={ this.handleSelect } />
                 <text strokeWidth="0.01" x={ coX } y={ coY }>{ node.name }</text>
                 {
-                    childNodes &&
-                    Object.keys(childNodes).map((index) => {
+                    children &&
+                    Object.keys(children).map((index) => {
                         return (
                             <Node
-                                node={ childNodes[index] }
+                                node={ children[index] }
                                 key={ index }
+                                parentOrigin={ originToPass }
                             />
                         );
                     })
@@ -105,9 +130,9 @@ Node.propTypes = {
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         value: PropTypes.string.isRequired,
-        childNodes: PropTypes.array
+        children: PropTypes.array
     }).isRequired,
-    origin: PropTypes.shape({
+    parentOrigin: PropTypes.shape({
         x: PropTypes.number.isRequired,
         y: PropTypes.number.isRequired
     })
