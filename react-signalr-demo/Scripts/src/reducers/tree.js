@@ -1,16 +1,6 @@
 
 import * as Actions from '../actions/constants';
 
-
-// export class DrawNode {
-//     constructor(node, parent = null, depth = 0, number = 1) {
-//         this.x = -1;
-//         this.y = depth;
-
-        
-//     }
-// }
-
 export class Node {
     constructor(node, parent = null, depth = 0, number = 1) {
         this.x = -1;
@@ -231,28 +221,6 @@ function buchheim(node) {
     return drawn;
 }
 
-let i = 0;
-export function assignCoords(node, depth = 0) {
-    node.x = i;
-    i += 1;
-    node.y = depth;
-    if (node.childNodes) {
-        if (!Array.isArray(node.childNodes)) {
-            node.childNodes = Object.keys(node.childNodes).map((index) => {
-                return node.childNodes[index];
-            });
-        }
-
-        node.children = node.childNodes.map(
-            (child) => {
-                return assignCoords(child, depth + 1);
-            }
-        );
-    }
-
-    return node;
-}
-
 export default function node(
     state = {
         node: undefined
@@ -261,10 +229,8 @@ export default function node(
 ) {
     switch(action.type) {
         case Actions.TREE_RECEIVED:
-            i = 0;
             const tree = new Node(action.tree);
             const formatted = buchheim(tree);
-            const mappedTree = assignCoords(action.tree);
             return Object.assign(
                 { },
                 {

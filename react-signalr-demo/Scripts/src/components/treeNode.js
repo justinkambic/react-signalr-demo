@@ -10,52 +10,6 @@ export default class Node extends Component {
         this.handleSelect = this.handleSelect.bind(this);
     }
 
-    // renderChildren(node, x, y) {
-    //     const self = this;
-    //     let array = [];
-
-    //     if (node.childNodes !== null) {
-    //         const divisions = Object.keys(node.childNodes).length;
-    //         const totalWidth = divisions * (50 + 15);
-    //         let startingPoint = x - totalWidth / 2;
-
-    //         Object.keys(node.childNodes).map(key => node.childNodes[key]).map((child) => {
-    //             array.push(self.renderChildren(child, startingPoint, y + 50));
-    //             startingPoint += 65;
-    //         });
-    //     }
-
-    //     const component = (
-    //         <SvgNode
-    //             node={ node }
-    //             x={ x }
-    //             y={ y }
-    //         />
-    //     );
-
-    //     return {
-    //         children: array,
-    //         component
-    //     };
-
-    //     // return (
-    //     //     <g>
-                
-    //     //     </g>
-    //     //     <div className="node">
-                
-    //     //         <div>
-    //     //             {
-    //     //                 node.childNodes &&
-    //     //                     Object.keys(node.childNodes).map(key => node.childNodes[key]).map((child) => {
-    //     //                         return self.renderChildren(child);
-    //     //                     })
-    //     //             }
-    //     //         </div>
-    //     //     </div>
-    //     // )
-    // }
-
     handleSelect() {
         const { id } = this.props.node;
         selectNode(id);
@@ -68,6 +22,8 @@ export default class Node extends Component {
         const coX = (x * 90) + 60;
         const coY = (y * 90) + 60;
         const fill = node.highlighted ? "yellow" : "black";
+        
+        // TODO: not hardcode, should come from a settings reducer
         const width = 50;
         const height = 25;
         
@@ -110,18 +66,6 @@ export default class Node extends Component {
                 }
             </g>
         );
-
-        // return (
-        //     <svg width="500" height="900">
-        //         { component.component }
-        //         {
-        //             component.children.map((child) => {
-        //                 child.children.map()
-        //                 return child.component;
-        //             })
-        //         }
-        //     </svg>
-        // );
     }
 };
 
