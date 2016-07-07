@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "test": "mochify --recursive --transform babelify",
-    "watch-test": "mochify -w --recursive --transform babelify",
+    "watch-test": "mochify -w --recursive --transform [ babelify --presets [ es2015 react ] ]",
     "gulp": "gulp",
     "tsd-init": "tsd init",
     "mocha-intellisense": "tsd query mocha --action install --save"

@@ -30,12 +30,115 @@ namespace core.Models
             }
         }
 
+        static Node()
+        {
+            _curId = 0;
+        }
+
+        private static int _curId;
+
+        private static string GetNextId()
+        {
+            return string.Format("TestId{0}", _curId++);
+        }
+
         public static Node Generate()
         {
+            //var root = new Node()
+            //{
+            //    //Id = Guid.NewGuid().ToString(),
+            //    Id = "TestId1",
+            //    Name = "Root",
+            //    Value = "I am the root",
+            //    ChildNodes = new Node[]
+            //    {
+            //        new Node()
+            //        {
+            //            //Id = Guid.NewGuid().ToString(),
+            //            Id = "TestId2",
+            //            Name = "Child A",
+            //            Value = "I am the first child. All mistakes are made here.",
+            //            ChildNodes = new Node[]
+            //            {
+            //                new Node()
+            //                {
+            //                    //Id = Guid.NewGuid().ToString(),
+            //                    Id = "TestId9",
+            //                    Name = "Grandchild C",
+            //                    Value = "The expectations of my older sibling weigh upon my ability to achieve.",
+            //                    ChildNodes = new Node[]
+            //                    {
+            //                        new Node()
+            //                        {
+            //                            //Id = Guid.NewGuid().ToString(),
+            //                            Id = "TestId10",
+            //                            Name = "Greatgrandchild F",
+            //                            Value = "The expectations of my older sibling weigh upon my ability to achieve.",
+            //                        }
+            //                    }
+            //                }, 
+            //            }
+            //        },
+            //        new Node()
+            //        {
+            //            //Id = Guid.NewGuid().ToString(),
+            //            Id = "TestId3",
+            //            Name = "Child B",
+            //            Value = "I am the middle child. My needs are neglected.",
+            //            ChildNodes = null
+            //        },
+            //        new Node()
+            //        {
+            //            //Id = Guid.NewGuid().ToString(),
+            //            Id = "TestId4",
+            //            Name = "Child C",
+            //            Value = "I am the last child. My growth was stunted through smothering.",
+            //            ChildNodes = new Node[]
+            //            {
+            //                new Node()
+            //                {
+            //                    //Id = Guid.NewGuid().ToString(),
+            //                    Id = "TestId5",
+            //                    Name = "Grandchild A",
+            //                    Value = "The hopes and dreams of the family rest upon my shoulders.",
+            //                    ChildNodes = null
+            //                },
+            //                new Node()
+            //                {
+            //                    //Id = Guid.NewGuid().ToString(),
+            //                    Id = "TestId6",
+            //                    Name = "Grandchild B",
+            //                    Value = "The expectations of my older sibling weigh upon my ability to achieve.",
+            //                    ChildNodes = new Node[]
+            //                    {
+            //                        new Node()
+            //                        {
+            //                            //Id = Guid.NewGuid().ToString(),
+            //                            Id = "TestId7",
+            //                            Name = "GreatGrandchild A",
+            //                            Value = "Now we're just testing.",
+            //                            ChildNodes = new Node[]
+            //                            {
+            //                                new Node()
+            //                                {
+            //                                    //Id = Guid.NewGuid().ToString(),
+            //                                    Id = "TestId8",
+            //                                    Name = "GreatGreatGrandchild B",
+            //                                    Value = "The expectations of my older sibling weigh upon my ability to achieve.",
+            //                                }
+            //                            }
+            //                        }
+            //                    }
+            //                },
+            //            }
+            //        },
+            //    }
+            //};
+
             var root = new Node()
             {
                 //Id = Guid.NewGuid().ToString(),
-                Id = "TestId1",
+                Id = GetNextId(),
                 Name = "Root",
                 Value = "I am the root",
                 ChildNodes = new Node[]
@@ -43,7 +146,7 @@ namespace core.Models
                     new Node()
                     {
                         //Id = Guid.NewGuid().ToString(),
-                        Id = "TestId2",
+                        Id = GetNextId(),
                         Name = "Child A",
                         Value = "I am the first child. All mistakes are made here.",
                         ChildNodes = new Node[]
@@ -51,7 +154,7 @@ namespace core.Models
                             new Node()
                             {
                                 //Id = Guid.NewGuid().ToString(),
-                                Id = "TestId9",
+                                Id = GetNextId(),
                                 Name = "Grandchild C",
                                 Value = "The expectations of my older sibling weigh upon my ability to achieve.",
                                 ChildNodes = new Node[]
@@ -59,7 +162,7 @@ namespace core.Models
                                     new Node()
                                     {
                                         //Id = Guid.NewGuid().ToString(),
-                                        Id = "TestId10",
+                                        Id = GetNextId(),
                                         Name = "Greatgrandchild F",
                                         Value = "The expectations of my older sibling weigh upon my ability to achieve.",
                                     }
@@ -70,15 +173,24 @@ namespace core.Models
                     new Node()
                     {
                         //Id = Guid.NewGuid().ToString(),
-                        Id = "TestId3",
+                        Id = GetNextId(),
                         Name = "Child B",
                         Value = "I am the middle child. My needs are neglected.",
-                        ChildNodes = null
+                        ChildNodes = new Node[]
+                        {
+                            new Node()
+                            {
+                                Id = GetNextId(),
+                                Name = "Grandchild F",
+                                Value = "some more witty stuff",
+                                ChildNodes = null
+                            }
+                        }
                     },
                     new Node()
                     {
                         //Id = Guid.NewGuid().ToString(),
-                        Id = "TestId4",
+                        Id = GetNextId(),
                         Name = "Child C",
                         Value = "I am the last child. My growth was stunted through smothering.",
                         ChildNodes = new Node[]
@@ -86,7 +198,7 @@ namespace core.Models
                             new Node()
                             {
                                 //Id = Guid.NewGuid().ToString(),
-                                Id = "TestId5",
+                                Id = GetNextId(),
                                 Name = "Grandchild A",
                                 Value = "The hopes and dreams of the family rest upon my shoulders.",
                                 ChildNodes = null
@@ -94,7 +206,7 @@ namespace core.Models
                             new Node()
                             {
                                 //Id = Guid.NewGuid().ToString(),
-                                Id = "TestId6",
+                                Id = GetNextId(),
                                 Name = "Grandchild B",
                                 Value = "The expectations of my older sibling weigh upon my ability to achieve.",
                                 ChildNodes = new Node[]
@@ -102,7 +214,7 @@ namespace core.Models
                                     new Node()
                                     {
                                         //Id = Guid.NewGuid().ToString(),
-                                        Id = "TestId7",
+                                        Id = GetNextId(),
                                         Name = "GreatGrandchild A",
                                         Value = "Now we're just testing.",
                                         ChildNodes = new Node[]
@@ -110,7 +222,7 @@ namespace core.Models
                                             new Node()
                                             {
                                                 //Id = Guid.NewGuid().ToString(),
-                                                Id = "TestId8",
+                                                Id = GetNextId(),
                                                 Name = "GreatGreatGrandchild B",
                                                 Value = "The expectations of my older sibling weigh upon my ability to achieve.",
                                             }
@@ -118,6 +230,21 @@ namespace core.Models
                                     }
                                 }
                             },
+                            new Node()
+                            {
+                                //Id = Guid.NewGuid().ToString(),
+                                Id = GetNextId(),
+                                Name = "Grandchild D",
+                                Value = "The hopes and dreams of the family rest upon my shoulders.",
+                                ChildNodes = null
+                            },
+                            new Node()
+                            {
+                                Id = GetNextId(),
+                                Name = "Grandchild E",
+                                Value = "I'm running out of witting things to say",
+                                ChildNodes = null
+                            }, 
                         }
                     },
                 }
