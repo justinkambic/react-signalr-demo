@@ -1,8 +1,3 @@
-/*
- *  The rules are set up here to be very strict and rigid.
- *  If it's later decided we don't want these to be listed as errors they can
- *  be set as warnings or ignored if good justification is provided.
-*/
 {
     "extends": [
         "eslint:recommended",
@@ -167,7 +162,7 @@
         "id-blacklist": ["error", "data", "err", "e", "cb", "callback", "event"],
         // single-letter variable names are horrible
         // use excepted "i" for loop iterations
-        "id-length": ["error", {"min": 2, "exceptions": ["i", "_", "$"]}],
+        "id-length": ["error", {"min": 2, "exceptions": ["i", "_", "$", "x", "y"]}],
         "indent": ["error", 4, {"SwitchCase": 1}],
         "key-spacing": ["error", {
             "singleLine": {
